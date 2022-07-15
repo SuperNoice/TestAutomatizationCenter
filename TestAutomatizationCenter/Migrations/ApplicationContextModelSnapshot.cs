@@ -29,8 +29,8 @@ namespace TestAutomatizationCenter.Migrations
                     b.Property<string>("Text")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("TimeStamp")
-                        .HasColumnType("datetime2");
+                    b.Property<long>("TimeStamp")
+                        .HasColumnType("bigint");
 
                     b.Property<int?>("UserId")
                         .HasColumnType("int");

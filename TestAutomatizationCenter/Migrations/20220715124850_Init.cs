@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TestAutomatizationCenter.Migrations
 {
-    public partial class Initial : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -30,7 +29,7 @@ namespace TestAutomatizationCenter.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<int>(type: "int", nullable: true),
                     Text = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TimeStamp = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    TimeStamp = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {

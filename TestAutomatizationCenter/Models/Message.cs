@@ -7,6 +7,6 @@ namespace TestAutomatizationCenter.Models
         public int Id { get; set; }
         public User User { get; set; }
         public string Text { get; set; }
-        public DateTime TimeStamp { get; set; }
+        public long TimeStamp { get; set; }
     }
 }

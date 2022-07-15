@@ -1,5 +1,33 @@
-﻿@{
+﻿@model ChatContent
+@{
     ViewData["Title"] = "Chat";
 }
 
+<div style="display: flex; flex-direction: column; justify-content: center;">
+    <div style="display: flex; justify-content: center;">
+        <label style="margin-right: 10px;">Пользователь: </label>
+        <select id="user">
+            @foreach (var user in Model.Users)
+            {
+                <option>@user</option>
+            }
+        </select>
+    </div>
+    <div style="display: flex; flex-direction: column; justify-content: flex-end; background-color: oldlace; width: 40vw; height: 80vh; align-self: center; margin-top: 5px;">
+        <div id="chat" style="overflow: auto;">
+            @foreach (var message in Model.Messages)
+            {
+                <div style="overflow-wrap: break-word;">@message.User.Login (@DateTime.UnixEpoch.AddMilliseconds(message.TimeStamp).ToString("dd.MM.yyyy, HH:mm:ss")): @message.Text</div>
+            }
+        </div>
 
+        <script type="text/javascript">
+            $("#chat").animate({ scrollTop: $("#chat").prop("scrollHeight") }, 1000);
+        </script>
+
+        <div style="display: flex;">
+            <textarea id="message" style="width: 90%;"></textarea>
+            <div style="background-color: aliceblue; display: flex; flex-direction: column; justify-content: center; cursor: pointer;" onclick="Send()">Отправить</div>
+        </div>
+    </div>
+</div>

@@ -10,8 +10,8 @@ using TestAutomatizationCenter.Models;
 namespace TestAutomatizationCenter.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220712091617_Initial")]
-    partial class Initial
+    [Migration("20220715124850_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,8 +31,8 @@ namespace TestAutomatizationCenter.Migrations
                     b.Property<string>("Text")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("TimeStamp")
-                        .HasColumnType("datetime2");
+                    b.Property<long>("TimeStamp")
+                        .HasColumnType("bigint");
 
                     b.Property<int?>("UserId")
                         .HasColumnType("int");

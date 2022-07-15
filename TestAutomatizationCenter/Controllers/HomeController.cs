@@ -29,7 +29,16 @@ namespace TestAutomatizationCenter.Controllers
 
         public IActionResult Chat()
         {
-            return View();
+            var chatContent = new ChatContent();
+
+            foreach(var user in _db.Users.ToArray())
+            {
+                chatContent.Users.Add(user.Login);
+            }
+
+            chatContent.Messages.AddRange(_db.Messages.ToArray());
+
+            return View(chatContent);
         }
 
         private static string GetHashSha256(string text)
@@ -52,6 +61,28 @@ namespace TestAutomatizationCenter.Controllers
             await _db.SaveChangesAsync();
 
             return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> SendMessage(string text, string login)
+        {
+            var user = _db.Users.FirstOrDefault(x => x.Login == login);
+            
+            if (user == null)
+            {
+                return BadRequest();
+            }
+
+            var message = new Message()
+            {
+                Text = text,
+                TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),
+                User = user
+            };
+
+            await _db.Messages.AddAsync(message);
+            await _db.SaveChangesAsync();
+
+            return Ok(message);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
