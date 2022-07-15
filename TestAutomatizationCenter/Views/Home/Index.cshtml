@@ -1,8 +1,51 @@
-﻿@{
+﻿@model List<User>
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div style="display:flex; flex-direction: column; justify-content: center; ">
+    <div style="width: max-content; align-self: center">
+        <form method="post" action="~/Home/AddUser">
+            <div style="display:flex; flex-direction: column; justify-content: center; ">
+                <input type="hidden" name="Id" />
+                <table style="text-align: right">
+                    <tr>
+                        <td><label>Имя пользователя:</label></td>
+                        <td><input type="text" name="Name" /></td>
+                    </tr>
+                    <tr>
+                        <td><label>Логин:</label></td>
+                        <td><input type="text" name="Login" /></td>
+                    </tr>
+                    <tr>
+                        <td><label>Пароль:</label></td>
+                        <td><input type="password" name="Password" /></td>
+                    </tr>
+                </table>
+
+                <input type="submit" value="Добавить" />
+            </div>
+        </form>
+    </div>
+    @if (Model != null)
+    {
+        <div style="display: flex; justify-content: center; margin-top: 30px;">
+            <table border="1">
+                <tr>
+                    <th>Имя пользователя</th>
+                    <th>Логин</th>
+                    <th>Пароль</th>
+                </tr>
+
+                @foreach (User user in Model)
+                {
+                    <tr>
+                        <td>@user.Name</td>
+                        <td>@user.Login</td>
+                        <td>@user.Password</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
 </div>
