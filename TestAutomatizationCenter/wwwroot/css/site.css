@@ -98,3 +98,7 @@ body {
     align-self: center;
     margin-top: 5px;
 }
+
+#chat {
+    margin: 5px;
+}
