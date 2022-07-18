@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace TestAutomatizationCenter.Models
+﻿namespace TestAutomatizationCenter.Models
 {
     public class Message
     {

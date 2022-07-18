@@ -85,6 +85,11 @@ namespace TestAutomatizationCenter.Controllers
             return Ok(message);
         }
 
+        public IActionResult GetMessages()
+        {
+            return Ok(_db.Messages.ToArray());
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

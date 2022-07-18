@@ -69,3 +69,32 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+.flex_col {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex_row {
+    display: flex;
+}
+
+.flex_col_c {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.flex_row_c {
+    display: flex;
+    justify-content: center;
+}
+
+#chat_box {
+    justify-content: flex-end;
+    background-color: oldlace;
+    width: 40vw;
+    height: 80vh;
+    align-self: center;
+    margin-top: 5px;
+}
